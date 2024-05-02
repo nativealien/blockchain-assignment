@@ -1,0 +1,18 @@
+{
+  "name": "blockchain-assignment",
+  "version": "1.0.0",
+  "description": "Inlämningsuppgift",
+  "main": "server.mjs",
+  "scripts": {
+    "dev": "nodemon server.mjs"
+  },
+  "keywords": [],
+  "author": "Oskar Assarsson",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
