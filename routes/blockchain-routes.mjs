@@ -1,10 +1,10 @@
 import express from 'express'
 
+import { getBlockchain } from '../controllers/blockchain-control.mjs'
+
 const blockchainRouter = express.Router()
 
 blockchainRouter.route('/')
-    .get( (req, res, next) => {
-        res.json({message: 'Welcome to my routed Blockchain'})
-    })
+    .get(getBlockchain)
 
 export default blockchainRouter
