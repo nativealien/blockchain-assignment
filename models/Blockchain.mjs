@@ -15,7 +15,11 @@ export default class Blockchain{
         return this.chain.at(-1)
     }
 
-    addBlock(newBlock){
-        // bewBlock.previousHash = this.getLatestBlock().hash
+    addBlock(timestamp, preBlockHash, data){
+        const block = new Block(this.chain.length + 1, timestamp, preBlockHash, data)
+        
+        this.chain.push(block)
+
+        return block
     }
 }
