@@ -4,7 +4,12 @@ import handleError from './middleware/handleError.mjs'
 import blockchainRouter from './routes/blockchain-routes.mjs'
 import nodeRouter from './routes/node-routes.mjs'
 
+import { loggEvent } from './data/data-handler.mjs'
+
+
 const app = express()
+
+loggEvent('TEST1\n')
 
 app.use(express.json())
 
