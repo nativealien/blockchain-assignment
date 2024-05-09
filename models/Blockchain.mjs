@@ -3,7 +3,7 @@ import Block from "./Block.mjs"
 export default class Blockchain{
     constructor(){
         this.chain = [this.genesisBlock()]
-        this.nodes = [ 'test' ]
+        this.nodes = []
         this.nodeUrl = process.argv[3]
     }
 
