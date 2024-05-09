@@ -22,8 +22,6 @@ const syncNodes = (url) => {
     try {
         members.forEach( async member => {
             const body = { nodeUrl: member}
-            console.log('BODY: ', body)
-
             const response = await fetch(`${url}/api/v1/nodes/register`, {
                 method: 'POST',
                 body: JSON.stringify(body),
@@ -31,14 +29,10 @@ const syncNodes = (url) => {
                     'Content-Type': 'application/json'
                 }
             })
-
-            // console.log('RES', url, response)
         })
     } catch (error) {
         console.log(error)
     }
-
-    console.log(members)
 }
 
 export { listNodes, registerNode }

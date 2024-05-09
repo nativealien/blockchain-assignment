@@ -22,4 +22,15 @@ export default class Blockchain{
 
         return block
     }
+
+    validateChain(blockchain) {
+        let valid = true;
+
+        for( let i = 1; i < blockchain.length; i++){
+            const block = blockchain[i]
+            const preBlock = blockchain[ i - 1 ]
+
+            console.log('validateCHain: ', block)
+        }
+    }
 }

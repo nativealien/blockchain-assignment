@@ -1,7 +1,5 @@
 import express from 'express'
 
-import Blockchain from './models/Blockchain.mjs'
-
 import handleError from './middleware/handleError.mjs'
 import blockchainRouter from './routes/blockchain-routes.mjs'
 import nodeRouter from './routes/node-routes.mjs'
