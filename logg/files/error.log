@@ -1,0 +1,18 @@
+ERROR LOGG
+
+GET /api/v1/blockchain1 - 2024-05-10 - 20:57:19
+Method: GET
+Url: /api/v1/blockchain1
+Date: 2024-05-10
+Time: 20:57:19
+status: 500
+Message: Something wrong at /api/v1/blockchain1
+
+POST /api/v1/blockchain/mine2 - 2024-05-10 - 20:58:56
+Method: POST
+Url: /api/v1/blockchain/mine2
+Date: 2024-05-10
+Time: 20:58:56
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine2
+
