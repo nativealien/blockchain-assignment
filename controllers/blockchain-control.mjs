@@ -1,4 +1,5 @@
 import { blockchain } from "../utilities/start-chain.mjs";
+import { writeFileAsync } from "../utilities/files-utils.mjs";
 
 const getBlockchain = (req, res, next) => {
     res.status(200).json({ success: true, data: blockchain})
@@ -12,6 +13,8 @@ const createBlock = (req, res, next) => {
     const currBlockHash = blockchain.hashBlock(timestamp, latestBlock.currentHash, data)
 
     const result = blockchain.addBlock(timestamp, latestBlock.currentHash, currBlockHash, data)
+
+    writeFileAsync('data', 'blockchain.json', JSON.stringify(blockchain.chain))
 
     res.status(200).json( { success: true, data: result} )
 }
@@ -36,7 +39,6 @@ const syncChain = (req, res, next) => {
             }else{
                 console.log('Chains are in sync.')
             }
-            console.log(blockchain.chain)
         }
     })
     

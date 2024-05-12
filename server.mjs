@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors'
 
 import { logger } from './logg/logger.mjs'
 
@@ -7,10 +8,19 @@ import handleError from './middleware/handleError.mjs'
 import blockchainRouter from './routes/blockchain-routes.mjs'
 import nodeRouter from './routes/node-routes.mjs'
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 dotenv.config({ path: './config/config.env' });
 
 const app = express()
 
+const fileName = fileURLToPath(import.meta.url)
+const dirname = path.dirname(fileName)
+
+global.__appdir = dirname
+
+app.use(cors())
 app.use(express.json())
 
 app.use(logger)
