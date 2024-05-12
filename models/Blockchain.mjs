@@ -1,4 +1,5 @@
 import Block from "./Block.mjs"
+import { generateHash } from "../utilities/crypto-util.mjs"
 
 export default class Blockchain{
     constructor(){
@@ -15,12 +16,18 @@ export default class Blockchain{
         return this.chain.at(-1)
     }
 
-    addBlock(timestamp, preBlockHash, data){
-        const block = new Block(this.chain.length + 1, timestamp, preBlockHash, data)
+    addBlock(timestamp, preBlockHash, currBlockHash, data){
+        const block = new Block(this.chain.length + 1, timestamp, preBlockHash, currBlockHash, data)
         
         this.chain.push(block)
 
         return block
+    }
+
+    hashBlock(timestamp, preBlockHash, currBlockHash) {
+        const hashString = timestamp.toString + preBlockHash + JSON.stringify(currBlockHash)
+        const hash = generateHash(hashString)
+        return hash
     }
 
     validateChain(blockchain) {

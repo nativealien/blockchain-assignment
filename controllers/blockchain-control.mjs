@@ -9,7 +9,9 @@ const createBlock = (req, res, next) => {
     const latestBlock = blockchain.getLatestBlock();
     const data = req.body;
 
-    const result = blockchain.addBlock(timestamp, latestBlock.hash, data)
+    const currBlockHash = blockchain.hashBlock(timestamp, latestBlock.currentHash)
+
+    const result = blockchain.addBlock(timestamp, latestBlock.currentHash, currBlockHash, data)
 
     res.status(200).json( { success: true, data: result} )
 }
@@ -30,20 +32,6 @@ const syncChain = (req, res, next) => {
                         longestChain = result.data.chain
                     }
         }
-        //     const result = await res.json()
-
-        //     console.log('Sync chain: ', result.data.chain.length)
-
-        //     if(result.data.chain.length > maxLength){
-        //         maxLength = result.data.chain.length
-        //         longestChain = result.data.chain
-        //     }
-
-        //     blockchain.validateChain(longestChain)
-
-        // }else{
-        //     console.log('NOT OK!')
-        // }
     })
 
     res.end()
