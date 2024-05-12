@@ -24,8 +24,8 @@ export default class Blockchain{
         return block
     }
 
-    hashBlock(timestamp, previousHash, currentHash) {
-        const hashString = timestamp.toString + previousHash + JSON.stringify(currentHash)
+    hashBlock(timestamp, previousHash, currentHash, nonce, difficulty) {
+        const hashString = timestamp.toString + previousHash + JSON.stringify(currentHash) + nonce + difficulty
         const hash = generateHash(hashString)
         return hash
     }
