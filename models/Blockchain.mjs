@@ -9,23 +9,23 @@ export default class Blockchain{
     }
 
     genesisBlock(){
-        return new Block(0, Date.now(), 0, ['genesisblock'])
+        return new Block(1, Date.now(), '0', '0', ['genesisblock'])
     }
 
     getLatestBlock(){
         return this.chain.at(-1)
     }
 
-    addBlock(timestamp, preBlockHash, currBlockHash, data){
-        const block = new Block(this.chain.length + 1, timestamp, preBlockHash, currBlockHash, data)
+    addBlock(timestamp, previousHash, currentHash, data){
+        const block = new Block(this.chain.length + 1, timestamp, previousHash, currentHash, data)
         
         this.chain.push(block)
 
         return block
     }
 
-    hashBlock(timestamp, preBlockHash, currBlockHash) {
-        const hashString = timestamp.toString + preBlockHash + JSON.stringify(currBlockHash)
+    hashBlock(timestamp, previousHash, currentHash) {
+        const hashString = timestamp.toString + previousHash + JSON.stringify(currentHash)
         const hash = generateHash(hashString)
         return hash
     }
@@ -37,7 +37,15 @@ export default class Blockchain{
             const block = blockchain[i]
             const preBlock = blockchain[ i - 1 ]
 
-            console.log('validateCHain: ', block)
+            const hash = this.hashBlock(block.timestamp, preBlock.currentHash, block.data)
+
+            console.log(hash)
+            console.log(block.currentHash)
+
+            if(hash !== block.currentHash) valid = false
+            if(block.previousHash !== preBlock.currentHash) valid = false
         }
+        console.log('Is valid: ', valid)
+        return valid
     }
 }
