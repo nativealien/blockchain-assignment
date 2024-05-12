@@ -6,15 +6,16 @@ const getBlockchain = (req, res, next) => {
 }
 
 const createBlock = (req, res, next) => {
-    const timestamp = Date.now();
+    // const timestamp = Date.now();
     const latestBlock = blockchain.getLatestBlock();
     const data = req.body;
+    const { nonce, difficulty, timestamp } = blockchain.proofOfWork( latestBlock.currentHash, data )
 
-    const currBlockHash = blockchain.hashBlock(timestamp, latestBlock.currentHash, data)
+    const currBlockHash = blockchain.hashBlock(timestamp, latestBlock.currentHash, data, nonce, difficulty)
 
-    const result = blockchain.addBlock(timestamp, latestBlock.currentHash, currBlockHash, data)
+    const result = blockchain.addBlock(timestamp, latestBlock.currentHash, currBlockHash, data, nonce, difficulty)
 
-    writeFileAsync('data', 'blockchain.json', JSON.stringify(blockchain.chain))
+    // writeFileAsync('data', 'blockchain.json', JSON.stringify(blockchain.chain))
 
     res.status(200).json( { success: true, data: result} )
 }
@@ -33,7 +34,6 @@ const syncChain = (req, res, next) => {
                 longestChain = result.data.chain
             }
             
-            console.log('One: ', result.data.chain.length, maxLength, longestChain)
             if(longestChain && blockchain.validateChain(longestChain)){
                 blockchain.chain = longestChain
             }else{
