@@ -17,7 +17,42 @@ const createBlock = (req, res, next) => {
 
     // writeFileAsync('data', 'blockchain.json', JSON.stringify(blockchain.chain))
 
+    blockchain.nodes.forEach( async node => {
+        // New endpoint /api/vi/blockchain/block/broadcast
+        const body = result;
+
+        await fetch(`${node}/api/v1/blockchain/block/broadcast`,{
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })
+
     res.status(200).json( { success: true, data: result} )
+    
+}
+
+const updateChain = (req, res, next) => {
+    const block = req.body;
+    const lastBlock = blockchain.getLatestBlock();
+
+    const hash = lastBlock.currentHash === block.previousHash
+    const index = lastBlock.index + 1 === block.index
+
+    if(hash && index ){
+        blockchain.chain.push(block)
+        res.status(201).json({
+            success: true,
+            statusCode: 201,
+            data: {
+                message: 'Block added and transfered'
+            }
+        })
+    }else{
+        res.status(500).json({ success: false, statusCode: 500, data: {message: 'Block denied...'}})
+    }
 }
 
 const syncChain = (req, res, next) => {
@@ -45,4 +80,4 @@ const syncChain = (req, res, next) => {
     res.status(200).json({ success: true, statusCode: 200, data: {message: 'Sync done!'}})
 }
 
-export { getBlockchain, createBlock, syncChain }
+export { getBlockchain, createBlock, syncChain, updateChain}

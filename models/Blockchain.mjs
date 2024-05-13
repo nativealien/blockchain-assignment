@@ -75,7 +75,6 @@ export default class Blockchain{
         }
 
     }
-    
 
     validateChain(blockchain) {
         let valid = true;

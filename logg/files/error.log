@@ -184,3 +184,11 @@ Time: 16:54:49
 status: 500
 Message: Something wrong at /api/v1/blockchain/mine
 
+GET /api/v1/blockchain/mine - 2024-05-13 - 09:29:07
+Method: GET
+Url: /api/v1/blockchain/mine
+Date: 2024-05-13
+Time: 09:29:07
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine
+
