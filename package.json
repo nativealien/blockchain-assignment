@@ -1,0 +1,24 @@
+{
+  "name": "blockchain-assignmentv2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.mjs",
+  "directories": {
+    "dev": "tests"
+  },
+  "scripts": {
+    "dev": "nodemon server.mjs 5004 http://localhost:5004"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitest/ui": "^1.6.0",
+    "nodemon": "^3.1.0",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
