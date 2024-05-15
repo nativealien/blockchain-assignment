@@ -9,6 +9,7 @@ const app = express()
 
 app.use( express.json() )
 app.use( cors() )
+
 app.use( logEvent )
 
 app.use( '/api/v1/blockchain', (req, res, next) => res.send( { message: res.message} ))
