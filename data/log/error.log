@@ -5,3 +5,13 @@
 | ERROR | GET 200 /api/v1/blockchain11 | 2024-05-16 00:41:07
 | ERROR | POST 200 /api/v1/block/mine | 2024-05-16 01:07:59
 | ERROR | GET 200 /api/v1/blockchaind | 2024-05-16 05:59:59
+| ERROR | GET 200 /api/v1/node7 | 2024-05-16 08:23:43
+| ERROR | GET 200 /api/v1/node/register | 2024-05-16 08:35:35
+| ERROR | GET 200 /api/v1/node/register | 2024-05-16 08:36:24
+| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:36:52
+| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:33
+| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:36
+| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:37
+| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:39
+| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:51
+| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:52

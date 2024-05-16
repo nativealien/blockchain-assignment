@@ -37,7 +37,7 @@ export default class Blockchain{
             date,
             preHash,
             nonce,
-            difficulty,
+            diff,
             data
           );
           if (hash !== validHash) return false;

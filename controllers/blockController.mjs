@@ -14,7 +14,7 @@ const mineBlock = (req, res, next) => {
     console.log(data)
     blockchain.addBlock(data)
     const result = res.status(201).json({data: data})
-    if(result) saveJson(blockchain.chain)
+    if(result) saveJson('/data/blockchain/chain.json', blockchain.chain)
 }
 const updateChain = (req, res, next) => {
 
