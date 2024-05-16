@@ -1,6 +1,9 @@
 import express from 'express';
 
-const nodeRouter = express.Router();
+export const nodeRouter = express.Router();
+
+const getNodes = () => {}
+const registerNode = () => {}
 
 nodeRouter.route('/').get(getNodes);
-nodeRouter.route('/register').post(regNode)
+nodeRouter.route('/register').post(registerNode)

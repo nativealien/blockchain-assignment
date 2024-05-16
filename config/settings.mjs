@@ -4,11 +4,11 @@ export const MINE_RATE = 2000
 export const DIFFICULTY = 3
 
 export const GENESIS_DATA = {
-    index: 1,
-    timestamp: Date.now(),
-    previousHash: '0',
-    currentHash: '0',
+    id: 1,
+    date: Date.now(),
+    preHash: '0',
+    hash: '0',
     nonce: 0,
-    difficulty: DIFFICULTY,
+    diff: DIFFICULTY,
     data: { message: 'Genisis block.' }
 }

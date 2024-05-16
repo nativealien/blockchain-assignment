@@ -1,6 +1,8 @@
 import express from 'express';
 
-const blockRouter = express.Router()
+import { getBlockchain, initBlockchain, getBlock, mineBlock, updateChain } from '../controllers/blockController.mjs';
+
+export const blockRouter = express.Router()
 
 blockRouter.route('/').get(getBlockchain)
 blockRouter.route('/init').get(initBlockchain)

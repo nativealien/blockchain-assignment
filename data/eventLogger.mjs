@@ -1,18 +1,27 @@
-import { writeSyncFile } from "./fileManager.mjs"
+import { writeToLog } from "./fileManager.mjs"
+
+class Res{
+    constructor( method, code, endPoint ){
+        this.method = method,
+        this.code = code,
+        this.endPoint = endPoint
+    }
+}
 
 const logEvent = (req, res, next) => {
     if(res.statusCode < 400){
         const message = `| EVENT | ${req.method} ${res.statusCode} ${req.originalUrl} ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')}` + '\n'
-        writeSyncFile('data/log', 'event.log', message)
-    }
+        writeToLog('data/log', 'event.log', message)
+    } 
     next()
 }
 
-const logError = (err, req, res, next) => {
-    const message = `| ERROR | ${req.method} ${res.statusCode} ${req.originalUrl} | ${err.message} | ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')}` + '\n'
-    writeSyncFile('data/log', 'error.log', message)
+const logError = (req, res, next) => {
+    const message = `| ERROR | ${req.method} ${res.statusCode} ${req.originalUrl} | ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')}` + '\n'
+    writeToLog('data/log', 'error.log', message)
 
-    res.status(err.status || 500).json({ error: message})
+    res.status(res.statusCode || 500).json(new Res(req.method, res.statusCode, req.originalUrl))
 }
 
-export { logEvent, logError }
+
+export { logEvent, logError, Res }

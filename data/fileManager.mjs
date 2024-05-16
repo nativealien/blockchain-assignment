@@ -1,13 +1,14 @@
 // import { writeFile } from 'fs/promises'
 import { fileURLToPath } from 'url'
 import path from 'path'
-import fs from 'fs'
+import { promises as fs } from 'fs'
 
 const folderPath = (meta) => { return path.dirname(fileURLToPath(meta)); }
 
-const writeToLog = (folder, file, data) => fs.appendFileSync(`${rootFolder}/${folder}/${file}`, data)
+const writeToLog = async (folder, file, data) => await fs.appendFile(`${rootFolder}/${folder}/${file}`, data)
 
-const loadJson = () => { return JSON.parse( fs.readFile(rootFolder + '/data/blockchain/chain.json', 'utf8' ) ) }
-const saveJson = (chain) => fs.writeFile(rootFolder + '/data/blockchain/chain.json', JSON.stringify(chain) ,'utf8' ) 
+const loadJson = async () => await fs.readFile(rootFolder + '/data/blockchain/chain.json', 'utf8')
 
-export { folderPath, writeSyncFile }
+const saveJson = async (chain) => await fs.writeFile(rootFolder + '/data/blockchain/chain.json', JSON.stringify(chain) ,'utf8' ) 
+
+export { folderPath, writeToLog, loadJson, saveJson }
