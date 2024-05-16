@@ -20,7 +20,6 @@ export default class Blockchain{
         if(!Blockchain.validateChain(chain)) return this.chain
 
         this.chain = chain
-        // console.log('Replace: ', this.chain)
         return this.chain
 
     }

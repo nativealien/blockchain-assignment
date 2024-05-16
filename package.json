@@ -7,7 +7,8 @@
     "dev": "tests"
   },
   "scripts": {
-    "dev": "nodemon server.mjs 5004 http://localhost:5004"
+    "node-1": "nodemon server.mjs 5001 http://localhost:5001",
+    "node-2": "nodemon server.mjs 5002 http://localhost:5002"
   },
   "keywords": [],
   "author": "",

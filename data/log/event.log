@@ -56,3 +56,7 @@
 | EVENT | GET 200 /api/v1/blockchain 2024-05-16 05:56:56
 | EVENT | POST 200 /api/v1/blockchain/block/mine 2024-05-16 05:57:14
 | EVENT | POST 200 /api/v1/blockchain/block/mine 2024-05-16 05:57:23
+| EVENT | GET 200 /api/v1/blockchain 2024-05-16 05:59:07
+| EVENT | GET 200 /api/v1/blockchaind 2024-05-16 05:59:59
+| EVENT | GET 200 /api/v1/blockchain 2024-05-16 06:00:22
+| EVENT | GET 200 /api/v1/blockchain 2024-05-16 06:02:46
