@@ -7,10 +7,10 @@ const getBlockchain = (req, res, next) => {
 const getIdBlock = (req, res, next) => {
 
 }
-const mineBlock = (req, res, next) => {
+const mineBlock = async (req, res, next) => {
     const data = req.body
     blockchain.addBlock(data)
-    const result = res.status(201).json({data: data})
+    const result = await res.status(201).json({data: data})
     if(result) saveJson('/data/blockchain/chain.json', blockchain.chain)
 }
 const updateChain = (req, res, next) => {

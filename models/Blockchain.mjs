@@ -7,6 +7,7 @@ export default class Blockchain{
         this.url = process.argv[3]
     }
     addBlock(data){
+      console.log('addBlock', this.chain.at(-1))
         const block = Block.mineBlock({ lastBlock: this.chain.at(-1), data: data });
         this.chain.push(block)
     }
@@ -16,12 +17,16 @@ export default class Blockchain{
     }
 
     replaceChain(chain){
+        console.log('replaceChain', chain)
+
+        const check = Blockchain.validateChain(chain)
+        console.log(check)
+
         if(chain.length <= this.chain.length) return this.chain
-        if(!Blockchain.validateChain(chain)) return this.chain
+        if(!check) return this.chain
 
         this.chain = chain
         return this.chain
-
     }
 
     static validateChain(chain) {
@@ -32,7 +37,7 @@ export default class Blockchain{
           const currentLastHash = chain[i - 1].currentHash;
     
           if (preHash !== currentLastHash) return false;
-    
+            console.log('FIRST', preHash !== currentLastHash)
           const validHash = createHash(
             date,
             preHash,
@@ -41,6 +46,7 @@ export default class Blockchain{
             data
           );
           if (hash !== validHash) return false;
+          console.log('Second', hash, validHash)
         }
         return true;
     }

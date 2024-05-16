@@ -5,7 +5,7 @@ import { nodeRouter } from './routes/nodeRouter.mjs'
 import { blockRouter } from './routes/blockRouter.mjs'
 import { initChain } from './utilities/initiate.mjs'
 
-import { logEvent, logError } from './data/eventLogger.mjs'
+import { logEvent, logError, logUndefined } from './data/eventLogger.mjs'
 import { folderPath } from './data/fileManager.mjs'
 global.rootFolder = folderPath(import.meta.url)
 
@@ -20,13 +20,7 @@ app.use( logEvent )
 app.use( '/api/v1/blockchain', blockRouter)
 app.use( '/api/v1/node', nodeRouter)
 
-app.all('*', (req, res, next) => {
-    const error = new Error('Not Found')
-    error.status = 404;
-    error.message = 'The request didnt go through... Check the endpoint.';
-    error.endPoint = req.originalUrl
-    next(error)
-})
+app.all('*', logUndefined)
 
 app.use( logError )
 

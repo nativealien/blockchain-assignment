@@ -11,8 +11,9 @@ export const initChain = async () => {
     blockchain.nodes = urls.filter( url => url !== blockchain.url)
 
     const chainJson = await loadJson('/data/blockchain/chain.json')
-    if(chainJson === '') saveJson('/data/blockchain/chain.json', blockchain.chain)
+    const newChain = blockchain.replaceChain(chainJson)
+    console.log('True chain: ', newChain)
+    if(chainJson === '' || chainJson.length === 0) saveJson('/data/blockchain/chain.json', blockchain.chain)
     else blockchain.chain = [...chainJson]
 
 }
-

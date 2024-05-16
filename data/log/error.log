@@ -2,30 +2,4 @@
 #                                ERROR LOG                              #
 #########################################################################
 
-| ERROR | GET 200 /api/v1/blockchain11 | 2024-05-16 00:41:07
-| ERROR | POST 200 /api/v1/block/mine | 2024-05-16 01:07:59
-| ERROR | GET 200 /api/v1/blockchaind | 2024-05-16 05:59:59
-| ERROR | GET 200 /api/v1/node7 | 2024-05-16 08:23:43
-| ERROR | GET 200 /api/v1/node/register | 2024-05-16 08:35:35
-| ERROR | GET 200 /api/v1/node/register | 2024-05-16 08:36:24
-| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:36:52
-| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:33
-| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:36
-| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:37
-| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:39
-| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:51
-| ERROR | POST 200 /api/v1/node/register | 2024-05-16 08:37:52
-| ERROR | POST 200 /api/v1/blockchain | 2024-05-16 09:23:44
-| ERROR | POST 200 /api/v1/blockchain | 2024-05-16 09:26:21
-| ERROR | POST 200 /api/v1/blockchain | 2024-05-16 09:36:18
-| ERROR | POST 200 /api/v1/blockchain | 2024-05-16 09:36:24
-| ERROR | POST 200 /api/v1/blockchain | 2024-05-16 09:42:10 | undefined
-| ERROR | POST 200 /api/v1/blockchain | 2024-05-16 09:43:18 | undefined
-| ERROR | POST 200 /api/v1/blockchain | 2024-05-16 09:54:14 | undefined
-| ERROR | POST 200 /api/v1/blockchain | 2024-05-16 09:55:04 | Sux...
-| ERROR | POST 404 /api/v1/blockchain | 2024-05-16 09:56:50 | Sux...
-| ERROR | POST 404 /api/v1/blockchain | 2024-05-16 09:58:12 | Sux...
-| ERROR | POST 404 /api/v1/blockchain | 2024-05-16 10:00:41 | Sux...
-| ERROR | POST 404 /api/v1/blockchain | 2024-05-16 10:03:51 | The request didnt go through... Check the endpoint.
-| ERROR | POST 404 /api/v1/blockchain | 2024-05-16 10:04:05 | The request didnt go through... Check the endpoint.
-| ERROR | POST 404 /api/v1/blockchain | 2024-05-16 10:07:32 | The request didnt go through... Check the endpoint.
+

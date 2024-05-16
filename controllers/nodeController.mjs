@@ -11,7 +11,7 @@ const registerNode = async (req, res, next) => {
 
     const newUrl = req.body.node
     const urlList = await loadJson(folderPath)
-    if(!urlList[0].nodes.includes(newUrl)){
+    if(!urlList[0].nodes.includes(newUrl) && newUrl !== undefined){
 
         urlList[0].nodes.push(newUrl)
         await saveJson(folderPath, urlList)
