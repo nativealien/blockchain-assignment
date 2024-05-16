@@ -20,14 +20,17 @@ app.use( logEvent )
 app.use( '/api/v1/blockchain', blockRouter)
 app.use( '/api/v1/node', nodeRouter)
 
-app.all('*', (err, req, res, next) => {
+app.all('*', (req, res, next) => {
     const error = new Error('Not Found')
     error.status = 404;
-    error.message = 'Sux...'
-    next(err)
+    error.message = 'The request didnt go through... Check the endpoint.';
+    error.endPoint = req.originalUrl
+    next(error)
 })
 
 app.use( logError )
 
 const PORT = process.argv[2]
 app.listen(PORT, () => console.log(`Server running on port ${PORT} folder ${rootFolder}`))
+
+// Redis

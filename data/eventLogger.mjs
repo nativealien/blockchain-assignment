@@ -1,13 +1,5 @@
 import { writeToLog } from "./fileManager.mjs"
 
-class Res{
-    constructor( method, code, endPoint ){
-        this.method = method,
-        this.code = code,
-        this.endPoint = endPoint
-    }
-}
-
 const logEvent = (req, res, next) => {
     if(res.statusCode < 400){
         const message = `| EVENT | ${req.method} ${res.statusCode} ${req.originalUrl} ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')}` + '\n'
@@ -16,12 +8,12 @@ const logEvent = (req, res, next) => {
     next()
 }
 
-const logError = (req, res, next) => {
-    const message = `| ERROR | ${req.method} ${res.statusCode} ${req.originalUrl} | ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')}` + '\n'
+const logError = (err, req, res, next) => {
+    const message = `| ERROR | ${req.method} ${err.status} ${req.originalUrl} | ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')} | ${err.message}` + '\n'
     writeToLog('data/log', 'error.log', message)
 
-    res.status(res.statusCode || 500).json(new Res(req.method, res.statusCode, req.originalUrl))
+    res.status(err.status).json({status: err.status, message: err.message, endpoint: err.endpoint})
 }
 
 
-export { logEvent, logError, Res }
+export { logEvent, logError }
