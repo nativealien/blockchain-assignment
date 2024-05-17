@@ -5,7 +5,9 @@ const getBlockchain = (req, res, next) => {
     res.status(200).json(blockchain.chain)
 }
 const getIdBlock = (req, res, next) => {
-
+    const id = req.params.id
+    const block = blockchain.chain.filter( item => item.id === +id)
+    res.status(200).json({ status: true, statusCode: 200, data: block})
 }
 const mineBlock = async (req, res, next) => {
     const data = req.body
