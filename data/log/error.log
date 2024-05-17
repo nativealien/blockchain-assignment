@@ -5,3 +5,4 @@
 
 | ERROR | GET undefined /api/v1/blockchain/block/1 | 2024-05-17 12:10:21 | block is not defined
 | ERROR | GET undefined /api/v1/blockchain/block/1 | 2024-05-17 12:10:55 | block is not defined
+| ERROR | GET 404 /api/v1/nodes | 2024-05-17 12:44:22 | The request didnt go through... Check the endpoint.

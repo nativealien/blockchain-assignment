@@ -10,11 +10,13 @@ export default class Blockchain{
     addBlock(data){
         const block = Block.mineBlock({ lastBlock: this.chain.at(-1), data: data });
         this.chain.push(block)
+        return block
     }
 
     getLastBlock(){
-        return this.chain[0]
+        return this.chain.at(-1)
     }
+    
 
     replaceChain(chain){
         const check = Blockchain.validateChain(chain)
