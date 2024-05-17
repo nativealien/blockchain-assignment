@@ -15,13 +15,18 @@ const mineBlock = async (req, res, next) => {
     const result = await res.status(201).json({data: data})
     
     blockchain.nodes.forEach( async url => {
-        await fetch(`${url}/api/v1/blockchain/block/broadcast`, {
-            method: 'POST',
-            body: JSON.stringify({block}),
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        })
+        try{
+            await fetch(`${url}/api/v1/blockchain/block/broadcast`, {
+                method: 'POST',
+                body: JSON.stringify({block}),
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            })
+        } catch(err){
+            loggErr
+            console.error(err)
+        }
     })
     saveJson('/data/blockchain/chain.json', blockchain.chain)
 }

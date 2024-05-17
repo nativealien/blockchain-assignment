@@ -38,7 +38,8 @@ export default class Block{
 
     static adjustDifficultyLevel({ block, date }) {
         const { diff } = block;
-        if (date - block.date > MINE_RATE) return diff - 1;
+        console.log(date - block.date)
+        if (date - block.date > MINE_RATE && diff>1) return diff - 1;
         return diff + 1;
       }
 }
