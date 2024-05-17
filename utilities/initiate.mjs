@@ -12,7 +12,7 @@ export const initChain = async () => {
 
     const chainJson = await loadJson('/data/blockchain/chain.json')
     const newChain = blockchain.replaceChain(chainJson)
-    console.log('True chain: ', newChain)
+    
     if(chainJson === '' || chainJson.length === 0) saveJson('/data/blockchain/chain.json', blockchain.chain)
     else blockchain.chain = [...chainJson]
 

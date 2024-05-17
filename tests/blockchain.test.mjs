@@ -41,7 +41,8 @@ describe('Blockchain class', () => {
                 })
                 describe('and one of the blocks previousHash has been manipulated', () => {
                     it('should return false', () => {
-                        blockchain.chain[1].previousHash = 'faulty-hash'
+                        blockchain.chain[1].preHash = 'faulty-hash'
+
                         expect(Blockchain.validateChain(blockchain.chain)).toBe(false)
                     })
                 })
@@ -81,7 +82,7 @@ describe('Blockchain class', () => {
         
               describe('and the chain is invalid', () => {
                 it('should not replace the chain', () => {
-                  blockchain2.chain[1].currentHash = 'dummy-hash';
+                  blockchain2.chain[1].hash = 'dummy-hash';
                   blockchain.replaceChain(blockchain2.chain);
         
                   expect(blockchain.chain).toEqual(originalChain);

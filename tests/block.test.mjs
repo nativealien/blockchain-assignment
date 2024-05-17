@@ -90,11 +90,11 @@ describe('Block class', () => {
                     date: block.date + MINE_RATE - 100,
                 })).toEqual( block.diff +1 )
         })
-        // it('should lower difficulty when blocks mines slow', () => {
-        //     expect(Block.adjustDifficultyLevel({
-        //         block: block,
-        //         date: block.date + MINE_RATE + 100,
-        //     })).toEqual(block.diff -1)
-        // })
+        it('should lower difficulty when blocks mines slow', () => {
+            expect(Block.adjustDifficultyLevel({
+                block: block,
+                date: block.date + MINE_RATE + 100,
+            })).toEqual(block.diff -1)
+        })
     })
 })
