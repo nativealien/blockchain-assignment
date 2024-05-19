@@ -8,20 +8,15 @@ const logEvent = (req, res, next) => {
     next()
 }
 
+const logUndefined = (req, res, next) => {
+    next(new Error(`The resource at ${req.originalUrl} was not found`))
+}
+
 const logError = (err, req, res, next) => {
-    const message = `| ERROR | ${req.method} ${err.status} ${req.originalUrl} | ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')} | ${err.message}` + '\n'
+    const message = `# | ERROR | ${req.method} ${err.statusCode} ${req.originalUrl} | ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')} | ${err.message}` + '\n'
     writeToLog('data/log', 'error.log', message)
 
-    res.status(err.status).json({message})
+    res.status(err.statusCode).json({status: err.statusCode, message: err.message})
 }
-
-const logUndefined = (req, res, next) => {
-    const error = new Error('Not Found')
-    error.status = 404;
-    error.message = 'The request didnt go through... Check the endpoint.';
-    error.endPoint = req.originalUrl
-    next(error)
-}
-
 
 export { logEvent, logError, logUndefined }

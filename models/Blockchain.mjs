@@ -17,7 +17,6 @@ export default class Blockchain{
         return this.chain.at(-1)
     }
     
-
     replaceChain(chain){
         const check = Blockchain.validateChain(chain)
         if(chain.length <= this.chain.length) return this.chain
