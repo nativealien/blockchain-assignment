@@ -14,6 +14,5 @@ export const initNode = async () => {
     if(chainJson !== '' || chainJson.length > blockchain.length){
         blockchain.chain = chainJson
     }
-    console.log(blockchain.chain)
 
 }

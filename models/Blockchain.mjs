@@ -18,28 +18,27 @@ export default class Blockchain{
     }
     
     replaceChain(chain){
-        const check = Blockchain.validateChain(chain)
+        const check = this.validateChain(chain)
         if(chain.length <= this.chain.length) return this.chain
         if(!check) return this.chain
 
         this.chain = chain
-        return this.chain
     }
 
     validateChain(chain) {
-        if (JSON.stringify(chain.at(0)) !== JSON.stringify(Block.genesis)) return false;
+        if (JSON.stringify(chain.at(0)) !== JSON.stringify(this.chain[0])) return false;
         for (let i = 1; i < chain.length; i++) {
-          const { date, preHash, hash, data, nonce, diff } = chain.at(i);
-          const currentLastHash = chain[i - 1].hash;
-          if (preHash !== currentLastHash) return false;
-          const validHash = hashString(
-            date,
-            preHash,
-            nonce,
-            diff,
-            data
-          );
-          if (hash !== validHash) return false;
+            const { date, preHash, hash, data, nonce, diff } = chain.at(i);
+            const currentLastHash = chain[i - 1].hash;
+            if (preHash !== currentLastHash) return false;
+            const validHash = hashString(
+                date,
+                preHash,
+                nonce,
+                diff,
+                data
+            );
+            if (hash !== validHash) return false;
         }
         return true;
     }

@@ -28,3 +28,4 @@
 # | ERROR | POST undefined /api/v1/blockchain/block/broadcast | 2024-05-19 17:08:59 | blockchain.push is not a function
 # | ERROR | POST undefined /api/v1/blockchain/block/mine | 2024-05-19 17:15:51 | The resource at /api/v1/blockchain/block/mine was not found
 # | ERROR | POST undefined /api/v1/blockchain/block/mine | 2024-05-19 17:16:48 | The resource at /api/v1/blockchain/block/mine was not found
+# | ERROR | POST undefined /api/v1/blockchain/consensus | 2024-05-19 18:25:14 | The resource at /api/v1/blockchain/consensus was not found

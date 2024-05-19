@@ -15,7 +15,6 @@ const mineBlock = async (req, res, next) => {
         const block = blockchain.addBlock(data)
         await res.status(201).json({ statusCode: res.statusCode, message: 'New block mined successfully!', data: data })
         blockchain.nodes.forEach( async url => {
-            console.log(url)
             try{
                 await fetch(`${url}/api/v1/blockchain/block/broadcast`, {
                     method: 'POST',
@@ -38,35 +37,22 @@ const updateChain = (req, res, next) => {
     const hash = lastBlock.hash === block.preHash
     const id = lastBlock.id + 1 === block.id
 
-    console.log('updated chain', hash, id)
     if(hash && id){
+        console.log('Block updated')
         blockchain.chain.push(block);
         res.status(201).json({statusCode: 201, message: 'Chain updated', data: block})
     }else{
+        console.log('Block rejected')
         res.status(500).json({success: false, statusCode: 500, data:{ message: 'Rejected'}})
     }
 }
 
 const syncChain = (req, res, next) => {
-    console.log('syncChain')
-    const chainLength = blockchain.chain.length
-    let maxLength = chainLength
-    let longestChain = null
-
     blockchain.nodes.forEach( async node => {
         const response = await fetch(`${node}/api/v1/blockchain`)
         if(response.ok){
             const result = await response.json();
-            console.log(node, result.data.length, maxLength)
-            if(result.data.length > maxLength){
-                maxLength = result.data.chain.length;
-                longestChain = result.data.length
-            }
-            if(!longestChain || longestChain && !blockchain.validateChain(longestChain)){
-                console.log('Chains are in sync')
-            }else {
-                blockchain.chain = longestChain
-            }
+            blockchain.replaceChain(result.data)
         }
     })
 
