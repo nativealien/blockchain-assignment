@@ -1,0 +1,194 @@
+ERROR LOGG
+
+GET /api/v1/blockchain1 - 2024-05-10 - 20:57:19
+Method: GET
+Url: /api/v1/blockchain1
+Date: 2024-05-10
+Time: 20:57:19
+status: 500
+Message: Something wrong at /api/v1/blockchain1
+
+POST /api/v1/blockchain/mine2 - 2024-05-10 - 20:58:56
+Method: POST
+Url: /api/v1/blockchain/mine2
+Date: 2024-05-10
+Time: 20:58:56
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine2
+
+GET /api/v1/blockchain2313 - 2024-05-12 - 11:29:50
+Method: GET
+Url: /api/v1/blockchain2313
+Date: 2024-05-12
+Time: 11:29:50
+status: 500
+Message: Something wrong at /api/v1/blockchain2313
+
+GET /api/v1/nodes/register - 2024-05-12 - 12:47:24
+Method: GET
+Url: /api/v1/nodes/register
+Date: 2024-05-12
+Time: 12:47:24
+status: 500
+Message: Something wrong at /api/v1/nodes/register
+
+GET /api/v1/nodes/register - 2024-05-12 - 12:55:25
+Method: GET
+Url: /api/v1/nodes/register
+Date: 2024-05-12
+Time: 12:55:25
+status: 500
+Message: Something wrong at /api/v1/nodes/register
+
+GET /api/v1/blockchain/mine - 2024-05-12 - 12:56:04
+Method: GET
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 12:56:04
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine
+
+POST /api/v1/blockchain/consensus - 2024-05-12 - 13:00:52
+Method: POST
+Url: /api/v1/blockchain/consensus
+Date: 2024-05-12
+Time: 13:00:52
+status: 500
+Message: Something wrong at /api/v1/blockchain/consensus
+
+GET /api/v1/blockchain/mine - 2024-05-12 - 13:44:02
+Method: GET
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 13:44:02
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine
+
+POST /api/v1/blockchain - 2024-05-12 - 13:52:59
+Method: POST
+Url: /api/v1/blockchain
+Date: 2024-05-12
+Time: 13:52:59
+status: 500
+Message: Something wrong at /api/v1/blockchain
+
+GET /api/v1/blockchain/mine - 2024-05-12 - 13:53:59
+Method: GET
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 13:53:59
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine
+
+GET /api/v1/blockchain/mine - 2024-05-12 - 13:56:00
+Method: GET
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 13:56:00
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine
+
+POST /api/v1/blockchain/consensus - 2024-05-12 - 13:56:16
+Method: POST
+Url: /api/v1/blockchain/consensus
+Date: 2024-05-12
+Time: 13:56:16
+status: 500
+Message: Something wrong at /api/v1/blockchain/consensus
+
+POST /api/v1/blockchain/ - 2024-05-12 - 15:30:20
+Method: POST
+Url: /api/v1/blockchain/
+Date: 2024-05-12
+Time: 15:30:20
+status: 500
+Message: Something wrong at /api/v1/blockchain/
+
+POST /api/v1/blockchain/mine - 2024-05-12 - 15:30:37
+Method: POST
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 15:30:37
+status: 500
+Message: Cannot access 'MINE_RATE' before initialization
+
+POST /api/v1/blockchain/mine - 2024-05-12 - 15:31:19
+Method: POST
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 15:31:19
+status: 500
+Message: Cannot access 'MINE_RATE' before initialization
+
+POST /api/v1/blockchain/mine - 2024-05-12 - 15:32:17
+Method: POST
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 15:32:17
+status: 500
+Message: Cannot access 'MINE_RATE' before initialization
+
+POST /api/v1/blockchain/mine - 2024-05-12 - 15:56:39
+Method: POST
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 15:56:39
+status: 500
+Message: Invalid count value: -1
+
+POST /api/v1/blockchain/mine - 2024-05-12 - 15:56:51
+Method: POST
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 15:56:51
+status: 500
+Message: Invalid count value: -1
+
+POST /api/v1/blockchain - 2024-05-12 - 16:02:31
+Method: POST
+Url: /api/v1/blockchain
+Date: 2024-05-12
+Time: 16:02:31
+status: 500
+Message: Something wrong at /api/v1/blockchain
+
+GET /api/v1/blockchain/mine - 2024-05-12 - 16:29:13
+Method: GET
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 16:29:13
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine
+
+POST /api/v1/blockchain - 2024-05-12 - 16:46:12
+Method: POST
+Url: /api/v1/blockchain
+Date: 2024-05-12
+Time: 16:46:12
+status: 500
+Message: Something wrong at /api/v1/blockchain
+
+GET /api/v1/blockchain/onsensus - 2024-05-12 - 16:46:45
+Method: GET
+Url: /api/v1/blockchain/onsensus
+Date: 2024-05-12
+Time: 16:46:45
+status: 500
+Message: Something wrong at /api/v1/blockchain/onsensus
+
+GET /api/v1/blockchain/mine - 2024-05-12 - 16:54:49
+Method: GET
+Url: /api/v1/blockchain/mine
+Date: 2024-05-12
+Time: 16:54:49
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine
+
+GET /api/v1/blockchain/mine - 2024-05-13 - 09:29:07
+Method: GET
+Url: /api/v1/blockchain/mine
+Date: 2024-05-13
+Time: 09:29:07
+status: 500
+Message: Something wrong at /api/v1/blockchain/mine
+
