@@ -1,23 +1,28 @@
 {
-  "name": "blockchain-assignment",
+  "name": "blockchain-assignmentv2",
   "version": "1.0.0",
-  "description": "Inlämningsuppgift",
+  "description": "",
   "main": "server.mjs",
+  "directories": {
+    "dev": "tests"
+  },
   "scripts": {
     "node-1": "nodemon server.mjs 5001 http://localhost:5001",
     "node-2": "nodemon server.mjs 5002 http://localhost:5002",
-    "node-3": "nodemon server.mjs 5003 http://localhost:5003"
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "keywords": [],
-  "author": "Oskar Assarsson",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitest/ui": "^1.6.0",
+    "nodemon": "^3.1.0",
+    "vitest": "^1.6.0"
+  },
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.0"
+    "hex-to-binary": "^1.0.1"
   }
 }

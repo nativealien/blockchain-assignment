@@ -1,42 +1,30 @@
 import express from 'express'
-// import dotenv from 'dotenv'
 import cors from 'cors'
 
-import { logger } from './logg/logger.mjs'
+import { nodeRouter } from './routes/nodeRouter.mjs'
+import { blockRouter } from './routes/blockRouter.mjs'
+import { initChain } from './utilities/initiate.mjs'
 
-import handleError from './middleware/handleError.mjs'
-import blockchainRouter from './routes/blockchain-routes.mjs'
-import nodeRouter from './routes/node-routes.mjs'
+import { logEvent, logError, logUndefined } from './data/eventLogger.mjs'
+import { folderPath } from './data/fileManager.mjs'
+global.rootFolder = folderPath(import.meta.url)
 
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-// dotenv.config({ path: './config/config.env' });
-
+initChain()
 const app = express()
 
-const fileName = fileURLToPath(import.meta.url)
-const dirname = path.dirname(fileName)
+app.use( express.json() )
+app.use( cors() )
 
-global.__appdir = dirname
+app.use( logEvent )
 
-app.use(cors())
-app.use(express.json())
+app.use( '/api/v1/blockchain', blockRouter)
+app.use( '/api/v1/node', nodeRouter)
 
-app.use(logger)
+app.all('*', logUndefined)
 
-app.use('/api/v1/blockchain', blockchainRouter)
-app.use('/api/v1/nodes', nodeRouter)
-
-app.all('*', (req, res, next) => {
-    next(new Error(`Something wrong at ${req.originalUrl}`))
-})
-
-app.use(handleError)
-
-// if(process.env.NODE_ENV === 'development'){
-// }
+app.use( logError )
 
 const PORT = process.argv[2]
+app.listen(PORT, () => console.log(`Server running on port ${PORT} folder ${rootFolder}`))
 
-app.listen(PORT, () => console.log('Server up on port ' + PORT))
+// Redis
