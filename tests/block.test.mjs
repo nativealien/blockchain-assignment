@@ -1,6 +1,6 @@
 import { it, describe, expect, beforeEach } from 'vitest'
 import hexToBinary from 'hex-to-binary';
-import { hashString } from '../utilities/utils.mjs';
+import { hashString } from '../utilities/crypto-utilities.mjs';
 
 import { GENESIS_DATA, MINE_RATE } from '../config/settings.mjs';
 import Block from '../models/Block.mjs';
@@ -11,7 +11,7 @@ describe('Block class', () => {
     const preHash = '0';
     const hash = '0';
     const nonce = 1;
-    const diff = 1;
+    const diff = 2;
     const data = { amount: 4, sender: 'Oskar', recipe: 'Kalle' }
 
     const block = new Block( { id, date, preHash, hash, nonce, diff, data } )

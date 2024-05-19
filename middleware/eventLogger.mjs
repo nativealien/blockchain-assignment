@@ -2,7 +2,7 @@ import { writeToLog } from "../utilities/file-utilities.mjs"
 
 const logEvent = (req, res, next) => {
     if(res.statusCode < 400){
-        const message = `| EVENT | ${req.method} ${res.statusCode} ${req.originalUrl} ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')}` + '\n'
+        const message = `# | EVENT | ${req.method} ${res.statusCode} ${req.originalUrl} ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')}` + '\n'
         writeToLog('data/log', 'event.log', message)
     } 
     next()

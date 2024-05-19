@@ -11,8 +11,7 @@ export const initNode = async () => {
     blockchain.nodes = urls.filter( url => url !== blockchain.url)
 
     const chainJson = await loadJson('/data/blockchain/chain.json')
-    if(chainJson !== '' || chainJson.length > blockchain.length){
+    if(chainJson.length > blockchain.chain.length){
         blockchain.chain = chainJson
     }
-
 }

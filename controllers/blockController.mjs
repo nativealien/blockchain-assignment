@@ -13,7 +13,7 @@ const mineBlock = async (req, res, next) => {
     const data = req.body
     if(Object.keys(data).length !== 0){
         const block = blockchain.addBlock(data)
-        await res.status(201).json({ statusCode: res.statusCode, message: 'New block mined successfully!', data: data })
+        await res.status(201).json({ statusCode: res.statusCode, message: 'New block mined successfully!', data: block })
         blockchain.nodes.forEach( async url => {
             try{
                 await fetch(`${url}/api/v1/blockchain/block/broadcast`, {
@@ -25,7 +25,6 @@ const mineBlock = async (req, res, next) => {
                 })
             } catch(err){
                 console.log('ERROR')
-                next()
             }
         })
     }else next(res.status(500).json(new Error("The request you sent was empty...") ))

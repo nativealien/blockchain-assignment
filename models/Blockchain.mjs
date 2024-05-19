@@ -18,15 +18,15 @@ export default class Blockchain{
     }
     
     replaceChain(chain){
-        const check = this.validateChain(chain)
+        const check = Blockchain.validateChain(chain)
         if(chain.length <= this.chain.length) return this.chain
         if(!check) return this.chain
-
         this.chain = chain
     }
 
-    validateChain(chain) {
-        if (JSON.stringify(chain.at(0)) !== JSON.stringify(this.chain[0])) return false;
+    static validateChain(chain) {
+        if(chain === typeof {}) return false
+        if (JSON.stringify(chain.at(0)) !== JSON.stringify(Block.genesis)) return false;
         for (let i = 1; i < chain.length; i++) {
             const { date, preHash, hash, data, nonce, diff } = chain.at(i);
             const currentLastHash = chain[i - 1].hash;

@@ -18,7 +18,7 @@ app.use( cors() )
 app.use( logEvent )
 
 app.use( '/api/v1/blockchain', blockRouter)
-app.use( '/api/v1/node', nodeRouter)
+app.use( '/api/v1/nodes', nodeRouter)
 
 app.all('*', logUndefined)
 

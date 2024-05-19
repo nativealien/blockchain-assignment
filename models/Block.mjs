@@ -33,12 +33,12 @@ export default class Block{
         } while (
             hexToBinary(hash).substring(0, diff) !== '0'.repeat(diff)
         )
+        const test = hexToBinary(hash).substring(0, diff)
         return new this({ id, date, preHash, hash, nonce, diff, data })
     }
 
     static adjustDifficultyLevel({ block, date }) {
         const { diff } = block;
-        console.log(date - block.date)
         if (date - block.date > MINE_RATE && diff>1) return diff - 1;
         return diff + 1;
       }

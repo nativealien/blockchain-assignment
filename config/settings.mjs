@@ -1,11 +1,11 @@
 
 
-export const MINE_RATE = 2000
-export const DIFFICULTY = 3
+export const MINE_RATE = 5000
+export const DIFFICULTY = 4
 
 export const GENESIS_DATA = {
     id: 1,
-    date: Date.now(),
+    date: new Date(),
     preHash: '0',
     hash: '0',
     nonce: 0,

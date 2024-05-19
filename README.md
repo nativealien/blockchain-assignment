@@ -8,10 +8,8 @@ Applikationen ska byggas som ett REST API med endpoints för att kunna skapa blo
 # Krav:
 
 ## Applikationen ska vara uppbyggd kring design mönstret MVC.
-Försökte efterleva Model View Controller så gott jag kunde.
 
 ## Felhantering enligt “best practice” ska användas(det som vi gått igenom)
-
 
 ## Blockkedjan ska skrivas till en json fil så att den finns även efter omstart av servern.
 
