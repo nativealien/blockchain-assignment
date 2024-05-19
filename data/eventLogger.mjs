@@ -16,7 +16,7 @@ const logError = (err, req, res, next) => {
     const message = `# | ERROR | ${req.method} ${err.statusCode} ${req.originalUrl} | ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')} | ${err.message}` + '\n'
     writeToLog('data/log', 'error.log', message)
 
-    res.status(err.statusCode).json({status: err.statusCode, message: err.message})
+    res.status(500).json({status: err.statusCode, message: err.message})
 }
 
 export { logEvent, logError, logUndefined }
