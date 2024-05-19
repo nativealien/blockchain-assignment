@@ -1,5 +1,5 @@
 import Block from "./Block.mjs";
-import { hashString } from "../utilities/utils.mjs";
+import { hashString } from "../utilities/crypto-utilities.mjs";
 
 export default class Blockchain{
     constructor(){
@@ -26,7 +26,7 @@ export default class Blockchain{
         return this.chain
     }
 
-    static validateChain(chain) {
+    validateChain(chain) {
         if (JSON.stringify(chain.at(0)) !== JSON.stringify(Block.genesis)) return false;
         for (let i = 1; i < chain.length; i++) {
           const { date, preHash, hash, data, nonce, diff } = chain.at(i);

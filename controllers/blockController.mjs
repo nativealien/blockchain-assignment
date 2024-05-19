@@ -1,5 +1,5 @@
-import { blockchain } from "../utilities/initiate.mjs"
-import { saveJson } from "../data/fileManager.mjs"
+import { blockchain } from "../utilities/initiate-node.mjs"
+import { saveJson } from "../utilities/file-utilities.mjs"
 
 const getBlockchain = (req, res, next) => { 
     res.status(200).json({ statusCode: res.statusCode, message: 'Blockchain fetch successfull!', data: blockchain.chain })
@@ -15,6 +15,7 @@ const mineBlock = async (req, res, next) => {
         const block = blockchain.addBlock(data)
         await res.status(201).json({ statusCode: res.statusCode, message: 'New block mined successfully!', data: data })
         blockchain.nodes.forEach( async url => {
+            console.log(url)
             try{
                 await fetch(`${url}/api/v1/blockchain/block/broadcast`, {
                     method: 'POST',
@@ -24,11 +25,12 @@ const mineBlock = async (req, res, next) => {
                     }
                 })
             } catch(err){
+                console.log('ERROR')
                 next()
             }
         })
-        saveJson('/data/blockchain/chain.json', blockchain.chain)
     }else next(res.status(500).json(new Error("The request you sent was empty...") ))
+    saveJson('/data/blockchain/chain.json', blockchain.chain)
 }
 const updateChain = (req, res, next) => {
     const block = req.body.block;
@@ -36,12 +38,39 @@ const updateChain = (req, res, next) => {
     const hash = lastBlock.hash === block.preHash
     const id = lastBlock.id + 1 === block.id
 
+    console.log('updated chain', hash, id)
     if(hash && id){
-        blockchain.push(block);
+        blockchain.chain.push(block);
         res.status(201).json({statusCode: 201, message: 'Chain updated', data: block})
     }else{
         res.status(500).json({success: false, statusCode: 500, data:{ message: 'Rejected'}})
     }
 }
 
-export { getBlockchain, getIdBlock, mineBlock, updateChain }
+const syncChain = (req, res, next) => {
+    console.log('syncChain')
+    const chainLength = blockchain.chain.length
+    let maxLength = chainLength
+    let longestChain = null
+
+    blockchain.nodes.forEach( async node => {
+        const response = await fetch(`${node}/api/v1/blockchain`)
+        if(response.ok){
+            const result = await response.json();
+            console.log(node, result.data.length, maxLength)
+            if(result.data.length > maxLength){
+                maxLength = result.data.chain.length;
+                longestChain = result.data.length
+            }
+            if(!longestChain || longestChain && !blockchain.validateChain(longestChain)){
+                console.log('Chains are in sync')
+            }else {
+                blockchain.chain = longestChain
+            }
+        }
+    })
+
+    res.status(200).json({successCode: 200, data: {message: 'Chains are synced.'}})
+}
+
+export { getBlockchain, getIdBlock, mineBlock, updateChain, syncChain }

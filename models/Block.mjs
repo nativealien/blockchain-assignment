@@ -1,6 +1,6 @@
 import hexToBinary from 'hex-to-binary';
 import { GENESIS_DATA, MINE_RATE } from "../config/settings.mjs";
-import { hashString } from '../utilities/utils.mjs';
+import { hashString } from '../utilities/crypto-utilities.mjs';
 
 export default class Block{
     constructor({ id, date, preHash, hash, nonce, diff, data }){

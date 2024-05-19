@@ -9,6 +9,6 @@ const loadJson = async (filePath) => {
     if(rawFile === '') return []
     else return JSON.parse(rawFile)
 } 
-const saveJson = async (filePath, chain) => await fs.writeFile( rootFolder + filePath, JSON.stringify(chain) ,'utf8' ) 
+const saveJson = async (filePath, file) => await fs.writeFile( rootFolder + filePath, JSON.stringify(file) ,'utf8' ) 
 
 export { folderPath, writeToLog, loadJson, saveJson }

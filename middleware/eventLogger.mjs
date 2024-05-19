@@ -1,4 +1,4 @@
-import { writeToLog } from "./fileManager.mjs"
+import { writeToLog } from "../utilities/file-utilities.mjs"
 
 const logEvent = (req, res, next) => {
     if(res.statusCode < 400){

@@ -3,13 +3,13 @@ import cors from 'cors'
 
 import { nodeRouter } from './routes/nodeRouter.mjs'
 import { blockRouter } from './routes/blockRouter.mjs'
-import { initChain } from './utilities/initiate.mjs'
+import { initNode } from './utilities/initiate-node.mjs'
 
-import { logEvent, logError, logUndefined } from './data/eventLogger.mjs'
-import { folderPath } from './data/fileManager.mjs'
+import { logEvent, logError, logUndefined } from './middleware/eventLogger.mjs'
+import { folderPath } from './utilities/file-utilities.mjs'
 global.rootFolder = folderPath(import.meta.url)
 
-initChain()
+initNode()
 const app = express()
 
 app.use( express.json() )
@@ -26,5 +26,3 @@ app.use( logError )
 
 const PORT = process.argv[2]
 app.listen(PORT, () => console.log(`Server running on port ${PORT} folder ${rootFolder}`))
-
-// Redis
