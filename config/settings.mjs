@@ -5,7 +5,7 @@ export const DIFFICULTY = 4
 
 export const GENESIS_DATA = {
     id: 1,
-    date: new Date(),
+    date: Date.now(),
     preHash: '0',
     hash: '0',
     nonce: 0,
